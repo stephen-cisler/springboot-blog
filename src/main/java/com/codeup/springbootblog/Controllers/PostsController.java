@@ -30,9 +30,8 @@ public class PostsController {
 
     @GetMapping("/posts/{id}")
     public String viewSingePost(@PathVariable String id, Model vModel){
-        Post post = new Post("This is my first Post", "I don't have much to say.");
+        Post post = postService.findPost(Long.parseLong(id));
         vModel.addAttribute("post", post);
-        vModel.addAttribute("id", id);
         return "posts/show";
     }
 
