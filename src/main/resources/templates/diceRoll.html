@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Dice Roll</title>
-</head>
+<head th:replace="fragments/header :: head"/>
 <body>
+<nav th:replace="fragments/nav :: nav"></nav>
 
 <div th:if="${rollPick}">
 
@@ -30,8 +28,10 @@
     <h3>The dice rolled a <span th:text="${roll}"></span></h3>
     <hr/>
     <h4><a href="/roll-dice">Try Again?</a></h4>
+
 </div>
 
+<footer th:replace="fragments/footer :: footer"></footer>
 
 </body>
 </html>
