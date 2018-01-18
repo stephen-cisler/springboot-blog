@@ -5,11 +5,10 @@
 <nav th:replace="fragments/nav :: nav"></nav>
 
 <div class="container">
-    <h1>show post</h1>
 
     <div class="panel panel-default" >
         <div class="panel-heading">
-            <h3 class="panel-title" th:text="${post.title}"></h3>
+            <h1 class="panel-title" th:text="${post.title}"></h1>
         </div>
         <div class="panel-body">
             <p th:text="${post.body}"></p>
