@@ -13,12 +13,12 @@
         <h3>Guess what it will be</h3>
     </div>
 
-    <h2><a href="roll-dice/1">1</a></h2>
-    <h2><a href="roll-dice/2">2</a></h2>
-    <h2><a href="roll-dice/3">3</a></h2>
-    <h2><a href="roll-dice/4">4</a></h2>
-    <h2><a href="roll-dice/5">5</a></h2>
-    <h2><a href="roll-dice/6">6</a></h2>
+    <h2><a href="/roll-dice/1">1</a></h2>
+    <h2><a href="/roll-dice/2">2</a></h2>
+    <h2><a href="/roll-dice/3">3</a></h2>
+    <h2><a href="/roll-dice/4">4</a></h2>
+    <h2><a href="/roll-dice/5">5</a></h2>
+    <h2><a href="/roll-dice/6">6</a></h2>
 
 </div>
 
@@ -28,6 +28,8 @@
     <h1 th:if="!${correctGuess}">Sorry, You Didn't Guess It</h1>
     <h3>You guessed <span th:text="${guess}"></span></h3>
     <h3>The dice rolled a <span th:text="${roll}"></span></h3>
+    <hr/>
+    <h4><a href="/roll-dice">Try Again?</a></h4>
 </div>
 
 
