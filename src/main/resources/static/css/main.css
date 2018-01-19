@@ -5,3 +5,15 @@
 .panel-body p {
     font-size: 14px;
 }
+
+body {
+    background-color: #781B1A;
+}
+
+.panel-default > .panel-heading {
+    background-color: #E7E9E9;
+}
+
+.float-right {
+    float: right;
+}
