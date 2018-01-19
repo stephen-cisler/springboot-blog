@@ -52,6 +52,7 @@ public class PostsController {
         return "posts/edit";
     }
 
+    @PostMapping("/posts/edit")
     public String editPost(@ModelAttribute Post post, Model vModel) {
         return "posts/show";
     }
