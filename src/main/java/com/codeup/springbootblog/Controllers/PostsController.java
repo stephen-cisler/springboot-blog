@@ -29,19 +29,19 @@ public class PostsController {
     }
 
     @GetMapping("/posts/{id}")
-    public String viewSingePost(@PathVariable String id, Model vModel){
+    public String viewSingePost(@PathVariable String id, Model vModel) {
         Post post = postService.findPost(Long.parseLong(id));
         vModel.addAttribute("post", post);
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
-    public String viewCreatePost() {
-     return "posts/create";
+    public String viewCreatePost(Model vModel) {
+        vModel.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
     public String createPost() {
         return "create a new post";
     }
