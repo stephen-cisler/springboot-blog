@@ -29,6 +29,11 @@ public class PostService {
         return posts;
     }
 
+    public void savePost(Post post) {
+        post.setId((long) posts.size() + 1);
+        posts.add(post);
+    }
+
     private void createPosts() {
         posts.add(new Post(posts.size() + 1,
                 "The First Post On the Blog",
