@@ -4,10 +4,7 @@ import com.codeup.springbootblog.Models.Post;
 import com.codeup.springbootblog.Services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -29,22 +26,34 @@ public class PostsController {
     }
 
     @GetMapping("/posts/{id}")
-    public String viewSingePost(@PathVariable String id, Model vModel){
+    public String viewSingePost(@PathVariable String id, Model vModel) {
         Post post = postService.findPost(Long.parseLong(id));
         vModel.addAttribute("post", post);
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String viewCreatePost() {
-     return "view the form for creating a post";
+    public String viewCreatePost(Model vModel) {
+        vModel.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String createPost() {
-        return "create a new post";
+    public String createPost(@ModelAttribute Post post, Model vModel) {
+        postService.savePost(post);
+        vModel.addAttribute("post", post);
+        return "posts/show";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable String id, Model vModel) {
+        long longId = Long.parseLong(id);
+        vModel.addAttribute("post", postService.findPost(longId));
+        return "posts/edit";
+    }
+
+    public String editPost(@ModelAttribute Post post, Model vModel) {
+        return "posts/show";
     }
 
 }
