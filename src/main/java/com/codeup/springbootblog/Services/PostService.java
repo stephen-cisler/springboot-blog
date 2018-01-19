@@ -16,8 +16,14 @@ public class PostService {
     }
 
     public Post findPost(long id) {
-        return posts.get((int) id - 1);
+        for (int i = 0; i < posts.size(); i += 1) {
+            if (posts.get(i).getId() == id) {
+                return posts.get(i);
+        }
     }
+
+        return posts.get((int)id -1);
+}
 
     public List<Post> findAllPosts() {
         return posts;
