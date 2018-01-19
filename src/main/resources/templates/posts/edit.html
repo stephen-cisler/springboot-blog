@@ -6,9 +6,9 @@
 
 <div class="container">
 
-    <h2 class="text-center">Create Post</h2>
+    <h2 class="text-center">Edit Post</h2>
 
-    <form action="/posts/create" method="post" th:object="${post}">
+    <form action="/posts/edit" method="post" th:object="${post}">
         <div class="form-group">
             <label for="title">Create A New Post</label>
 
@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
 
-        <textarea class="form-control" rows="16" th:field="*{body}" placeholder="Body"></textarea>
+            <textarea class="form-control" rows="16" th:field="*{body}" placeholder="Body"></textarea>
 
         </div>
         <button type="submit" class="btn btn-default">Submit</button>

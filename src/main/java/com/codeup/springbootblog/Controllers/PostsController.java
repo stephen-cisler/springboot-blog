@@ -45,4 +45,15 @@ public class PostsController {
         return "posts/show";
     }
 
+    @GetMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable String id, Model vModel) {
+        long longId = Long.parseLong(id);
+        vModel.addAttribute("post", postService.findPost(longId));
+        return "posts/edit";
+    }
+
+    public String editPost(@ModelAttribute Post post, Model vModel) {
+        return "posts/show";
+    }
+
 }
