@@ -18,6 +18,7 @@ public class PostsController {
         this.postService = postService;
     }
 
+    // Handles display of all blog posts.
     @GetMapping("/posts")
     public String viewPosts(Model vModel) {
         List<Post> posts = postService.findAllPosts();
@@ -25,6 +26,7 @@ public class PostsController {
         return "posts/index";
     }
 
+    // Handles detailed display of a single blog post
     @GetMapping("/posts/{id}")
     public String viewSingePost(@PathVariable String id, Model vModel) {
         Post post = postService.findPost(Long.parseLong(id));
@@ -32,12 +34,14 @@ public class PostsController {
         return "posts/show";
     }
 
+    // Handles the blog creation form.
     @GetMapping("/posts/create")
     public String viewCreatePost(Model vModel) {
         vModel.addAttribute("post", new Post());
         return "posts/create";
     }
 
+    // Handles the blog creation submission.
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post, Model vModel) {
         postService.savePost(post);
@@ -45,6 +49,7 @@ public class PostsController {
         return "posts/show";
     }
 
+    // Handles blog editing form.
     @GetMapping("/posts/{id}/edit")
     public String editPost(@PathVariable String id, Model vModel) {
         long longId = Long.parseLong(id);
@@ -52,6 +57,7 @@ public class PostsController {
         return "posts/edit";
     }
 
+    // Handles blog editing submission. BUT CURRENTLY DOES NOT SAVE EDITS
     @PostMapping("/posts/edit")
     public String editPost(@ModelAttribute Post post, Model vModel) {
         return "posts/show";

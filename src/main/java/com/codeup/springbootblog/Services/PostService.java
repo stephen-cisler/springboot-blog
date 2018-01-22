@@ -11,10 +11,12 @@ import java.util.List;
 public class PostService {
     private List<Post> posts = new ArrayList<>();
 
+    // Constructor which uses the test seeder.
     public PostService() {
         createPosts();
     }
 
+    // Gets a single post based on ID
     public Post findPost(long id) {
         for (int i = 0; i < posts.size(); i += 1) {
             if (posts.get(i).getId() == id) {
@@ -25,15 +27,18 @@ public class PostService {
         return posts.get((int)id -1);
 }
 
+    // listing all blog posts. Order not yet controlled. Consider functions to control listing orders on the future sql queries.
     public List<Post> findAllPosts() {
         return posts;
     }
 
+    // Creates a post, will have INSERT functionality later when database is made.
     public void savePost(Post post) {
         post.setId((long) posts.size() + 1);
         posts.add(post);
     }
 
+    // A Seeder for this early stage. Most likely will be removed or commented out. Used for testing purposes.
     private void createPosts() {
         posts.add(new Post(posts.size() + 1,
                 "The First Post On the Blog",
