@@ -21,7 +21,7 @@ public class PostsController {
     // Handles display of all blog posts.
     @GetMapping("/posts")
     public String viewPosts(Model vModel) {
-        List<Post> posts = postService.findAllPosts();
+        Iterable<Post> posts = postService.findAllPosts();
         vModel.addAttribute("posts", posts);
         return "posts/index";
     }

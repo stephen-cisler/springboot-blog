@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="posts")
 public class Post {
     @Id @GeneratedValue
+    @Column(nullable = false)
     private long id;
 
     @Column(nullable = false)
