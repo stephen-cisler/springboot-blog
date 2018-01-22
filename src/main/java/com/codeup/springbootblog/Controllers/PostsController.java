@@ -46,7 +46,7 @@ public class PostsController {
     public String createPost(@ModelAttribute Post post, Model vModel) {
         postService.savePost(post);
         vModel.addAttribute("post", post);
-        return "posts/show";
+        return "redirect:/posts";
     }
 
     // Handles blog editing form.
@@ -60,7 +60,7 @@ public class PostsController {
     // Handles blog editing submission. BUT CURRENTLY DOES NOT SAVE EDITS
     @PostMapping("/posts/edit")
     public String editPost(@ModelAttribute Post post, Model vModel) {
-        return "posts/show";
+        return "redirect:/posts";
     }
 
 }
