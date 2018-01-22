@@ -6,9 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class PostsController {
@@ -21,7 +18,7 @@ public class PostsController {
     // Handles display of all blog posts.
     @GetMapping("/posts")
     public String viewPosts(Model vModel) {
-        List<Post> posts = postService.findAllPosts();
+        Iterable<Post> posts = postService.findAllPosts();
         vModel.addAttribute("posts", posts);
         return "posts/index";
     }
@@ -51,16 +48,33 @@ public class PostsController {
 
     // Handles blog editing form.
     @GetMapping("/posts/{id}/edit")
-    public String editPost(@PathVariable String id, Model vModel) {
+    public String editPostForm(@PathVariable String id, Model vModel) {
         long longId = Long.parseLong(id);
         vModel.addAttribute("post", postService.findPost(longId));
         return "posts/edit";
     }
 
-    // Handles blog editing submission. BUT CURRENTLY DOES NOT SAVE EDITS
+    // Handles blog editing submission.
     @PostMapping("/posts/edit")
     public String editPost(@ModelAttribute Post post, Model vModel) {
+        postService.savePost(post);
         return "redirect:/posts";
+    }
+
+    // Handles blog post deletion page for confirmation
+    @GetMapping("/posts/{id}/delete")
+    public String deletePostConfirm(@PathVariable String id, Model vModel) {
+        long longId = Long.parseLong(id);
+        vModel.addAttribute("post", postService.findPost(longId));
+        return "posts/delete";
+    }
+
+    // Handles blog entry deletion.
+    @PostMapping("/posts/delete")
+    public String deletePost(@ModelAttribute Post post) {
+        postService.deletePost(post.getId());
+        return "redirect:/posts";
+
     }
 
 }

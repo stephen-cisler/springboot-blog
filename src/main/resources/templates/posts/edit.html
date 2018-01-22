@@ -9,8 +9,9 @@
     <form action="/posts/edit" method="post" th:object="${post}">
         <div class="panel panel-default">
             <div class="panel-heading">
+                <input type="hidden" class="form-control" id="id" th:field="*{id}"/>
                 <div class="form-group">
-                    <label for="title">Editing Post</label>
+                    <label for="title">Editing Post <span th:text="*{id}"></span></label>
                     <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="Title"/>
                 </div>
             </div>
