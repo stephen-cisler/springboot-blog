@@ -57,9 +57,10 @@ public class PostsController {
         return "posts/edit";
     }
 
-    // Handles blog editing submission. BUT CURRENTLY DOES NOT SAVE EDITS
+    // Handles blog editing submission.
     @PostMapping("/posts/edit")
     public String editPost(@ModelAttribute Post post, Model vModel) {
+        postService.savePost(post);
         return "redirect:/posts";
     }
 
