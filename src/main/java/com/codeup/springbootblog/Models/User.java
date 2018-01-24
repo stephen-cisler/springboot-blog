@@ -9,9 +9,9 @@ public class User {
 
     @Id @GeneratedValue
     private long id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
     private String password;
@@ -19,6 +19,8 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
 
+    public User() {
+    }
 
     public long getId() {
         return id;
