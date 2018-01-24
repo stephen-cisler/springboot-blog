@@ -15,7 +15,7 @@
         </div>
         <div class="panel-footer">
             <div><a th:href="@{'/posts/'} + ${post.id} + @{'/edit'}">Edit Post</a></div>
-            <span>01-18-2018</span>
+            <span th:text="${post.user.username}"></span>
         </div>
     </div>
 
