@@ -1,6 +1,7 @@
 package com.codeup.springbootblog.Controllers;
 
 import com.codeup.springbootblog.Models.Post;
+import com.codeup.springbootblog.Models.User;
 import com.codeup.springbootblog.Services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,7 +42,9 @@ public class PostsController {
     // Handles the blog creation submission.
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post, Model vModel) {
-        postService.savePost(post);
+        // HARD WIRED USER, REMOVE LATER
+        User user = postService.findUser(1L);
+        postService.savePost(post, user);
         vModel.addAttribute("post", post);
         return "redirect:/posts";
     }
@@ -57,7 +60,8 @@ public class PostsController {
     // Handles blog editing submission.
     @PostMapping("/posts/edit")
     public String editPost(@ModelAttribute Post post, Model vModel) {
-        postService.savePost(post);
+        User user = postService.findUser(1L);
+        postService.savePost(post, user);
         return "redirect:/posts";
     }
 
