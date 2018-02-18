@@ -22,6 +22,14 @@ public class User {
     public User() {
     }
 
+    // Copy Constructor for Authentication
+    public User(User copy) {
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
+
     public long getId() {
         return id;
     }

@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <form action="/posts/create" method="post" th:object="${post}">
+    <form th:action="@{/posts/create}" method="post" th:object="${post}">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="form-group">

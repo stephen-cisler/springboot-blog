@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <form action="/posts/edit" method="post" th:object="${post}">
+    <form th:action="@{/posts/edit}" method="post" th:object="${post}">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <input type="hidden" class="form-control" id="id" th:field="*{id}"/>

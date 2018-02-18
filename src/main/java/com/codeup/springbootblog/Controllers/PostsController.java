@@ -3,6 +3,7 @@ package com.codeup.springbootblog.Controllers;
 import com.codeup.springbootblog.Models.Post;
 import com.codeup.springbootblog.Models.User;
 import com.codeup.springbootblog.Services.PostService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,8 +43,7 @@ public class PostsController {
     // Handles the blog creation submission.
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post, Model vModel) {
-        // HARD WIRED USER, REMOVE LATER
-        User user = postService.findUser(1L);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postService.savePost(post, user);
         vModel.addAttribute("post", post);
         return "redirect:/posts";

@@ -49,6 +49,7 @@ public class PostService {
         postsRepository.delete(id);
     }
 
+    // Find user by id number.
     public User findUser(long id) {
         return usersRepository.findOne(id);
     }
